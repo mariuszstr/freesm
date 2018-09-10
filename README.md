@@ -1,2 +1,2 @@
 # freesm
-Simple speedway manager game, open source, python, pyqt.
+Simple speedway manager game, python, pyqt, open source (GPL3).
