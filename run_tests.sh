@@ -4,7 +4,7 @@ PYENV_HOME=$WORKSPACE/.venv
 #    rm -rf $PYENV_HOME
 #fi
 
-PATH=$WORKSPACE/.venv/bin:/usr/local/bin:$PATH
+#PATH=$WORKSPACE/.venv/bin:/usr/local/bin:$PATH
 if [ ! -d ".venv" ]; then
 	virtualenv -p python3 $PYENV_HOME
 fi
