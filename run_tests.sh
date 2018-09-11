@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 PYENV_HOME=$WORKSPACE/.venv
 #if [ -d $PYENV_HOME ]; then
 #    rm -rf $PYENV_HOME
