@@ -15,7 +15,7 @@ cd $WORKSPACE
 echo "Virtualenv activated"
 pip --version
 pip install nosexcover
-pip install python3-pylint
+pip install pylint
 echo "Installed default requirements"
 # pip install --quiet $WORKSPACE/  # where your setup.py lives
 pip3 install -r $WORKSPACE/requirements.txt
