@@ -12,12 +12,12 @@ fi
 . ./$PYENV_HOME/bin/activate
 
 echo "Virtualenv activated"
-pip --version
-pip install nosexcover
+pip3 --version
+pip3 install nosexcover
 #pip install pylint==2.1.1
 echo "Installed default requirements"
 # pip install --quiet $WORKSPACE/  # where your setup.py lives
-pip install -r $WORKSPACE/requirements.txt
+pip3 install -r $WORKSPACE/requirements.txt
 echo "Installed user requirements."
 export PYTHONPATH=$WORKSPACE
 
