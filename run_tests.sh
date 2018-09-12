@@ -9,7 +9,7 @@ if [ ! -d ".venv" ]; then
 	virtualenv -p python3 $PYENV_HOME
 fi
 #source $PYENV_HOME/bin/activate
-. ./$PYENV_HOME/bin/activate
+. .$PYENV_HOME/bin/activate
 
 echo "Virtualenv activated"
 pip3 --version
