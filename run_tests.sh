@@ -23,4 +23,4 @@ echo "Installed user requirements."
 export PYTHONPATH=$WORKSPACE
 
 nosetests --with-xcoverage --with-xunit --cover-package=. --cover-erase
-pylint -f parseable freesm/ --ignore=.venv | tee pylint.out
+pylint -f parseable freesm/ --ignore=lib | tee pylint.out
