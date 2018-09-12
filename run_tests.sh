@@ -14,8 +14,8 @@ cd $WORKSPACE
 
 echo "Virtualenv activated"
 pip --version
-pip3 install nosexcover
-#pip install pylint==2.1.1
+pip install nosexcover
+pip install python3-pylint
 echo "Installed default requirements"
 # pip install --quiet $WORKSPACE/  # where your setup.py lives
 pip3 install -r $WORKSPACE/requirements.txt
@@ -23,4 +23,4 @@ echo "Installed user requirements."
 export PYTHONPATH=$WORKSPACE
 
 nosetests --with-xcoverage --with-xunit --cover-package=. --cover-erase
-#pylint -f parseable freesm/ | tee pylint.out
+pylint -f parseable freesm/ | tee pylint.out
