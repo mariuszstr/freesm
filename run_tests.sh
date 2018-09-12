@@ -13,7 +13,7 @@ cd $WORKSPACE
 . ./.venv/bin/activate
 
 echo "Virtualenv activated"
-pip3 --version
+pip --version
 pip3 install nosexcover
 #pip install pylint==2.1.1
 echo "Installed default requirements"
