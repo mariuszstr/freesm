@@ -1,0 +1,10 @@
+.venv
+__pycache__
+.pycharm
+*.pyc
+.idea
+.pytest_cache
+.covarege
+covarege.xml
+nosetests.xml
+pylint.xml
