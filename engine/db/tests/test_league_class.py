@@ -33,3 +33,16 @@ def test_constructor():
 
     assert druga_liga.next_class == pierwsza_liga
     assert not druga_liga.previous_class
+
+
+def test_eq():
+    poland = Country("Poland", 38000000, 30, 60)
+    league = League(poland, "polish league", 99)
+
+    class1 = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
+    class2 = LeagueClass(league, "Polska 1 liga", 70, class1, None)
+    class3 = LeagueClass(league, "Polska Ekstraliga", 89, class2, None)
+
+    assert class1 != class2
+    assert class1 == class3  # it is not a bug, it's a feature - compare only names.
+    assert class2 != class3

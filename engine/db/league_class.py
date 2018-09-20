@@ -5,3 +5,6 @@ class LeagueClass:
         self.ability = ability
         self.next_class = next_class
         self.previous_class = previous_class
+
+    def __eq__(self, other):
+        return self.name == other.name

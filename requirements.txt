@@ -1,1 +1,2 @@
 pytest==3.8.0
+jsonpickle==0.9.6

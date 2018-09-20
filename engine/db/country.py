@@ -4,3 +4,6 @@ class Country:
         self.population = population
         self.wealth = wealth
         self.speedway_popularity = speedway_popularity
+
+    def __eq__(self, other):
+        return self.name == other.name

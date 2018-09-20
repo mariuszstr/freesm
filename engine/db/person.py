@@ -15,3 +15,8 @@ class Person:
         self.strength = strength
         self.condition = condition
         self.reflex = reflex
+
+    def __eq__(self, other):
+        return self.first_name == other.first_name and self.last_name == other.last_name and \
+               self.birth_date.day == other.birth_date.day and self.birth_date.month == other.birth_date.month and \
+               self.birth_date.year == other.birth_date.year

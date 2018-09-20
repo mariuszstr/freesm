@@ -24,3 +24,30 @@ def test_constructor():
     assert track_preparation.track == track
     assert track_preparation.adhesion == 50
     assert track_preparation.wetness == 90
+
+def test_eq():
+    poland = Country("Poland", 38000000, 30, 60)
+    league = League(poland, "polish league", 99)
+
+    ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
+
+    torun = City("Toruń", None, 200000, 30, 85)
+
+    apator = Team(league, ekstraliga, "Apator", torun, poland, 99, None)
+
+    stadium1 = Stadium("Motoarena", poland, apator, 20000, 99)
+    stadium2 = Stadium("Motoarena2", poland, apator, 20000, 99)
+
+    track1 = Track(stadium1, 300, 30, 45)
+    track2 = Track(stadium2, 300, 30, 45)
+
+    track_preparation1 = TrackPreparation(track1, 90, 50)
+    track_preparation2 = TrackPreparation(track2, 90, 50)
+    track_preparation3 = TrackPreparation(track1, 80, 50)
+    track_preparation4 = TrackPreparation(track1, 90, 60)
+    track_preparation5 = TrackPreparation(track1, 90, 50)
+
+    assert track_preparation1 != track_preparation2
+    assert track_preparation1 != track_preparation3
+    assert track_preparation1 != track_preparation4
+    assert track_preparation1 == track_preparation5

@@ -5,3 +5,6 @@ class Stadium:
         self.team = team
         self.sits = sits
         self.ability = ability
+
+    def __eq__(self, other):
+        return self.name == other.name

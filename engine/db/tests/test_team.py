@@ -41,3 +41,27 @@ def test_constructor():
 
     assert polonia.derby_teams == [apator, ]
     assert apator.derby_teams == [polonia, ]
+
+def test_eq():
+
+    poland = Country("Poland", 38000000, 30, 60)
+    league = League(poland, "polish league", 99)
+
+    ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
+    druga_liga = LeagueClass(league, "Polska 2 liga", 50, None, None)
+
+    torun = City("Toruń", None, 200000, 30, 85)
+    bydgoszcz = City("Bydgoszcz", None, 400000, 40, 55)
+
+    team1 = Team(league, druga_liga, "Polonia", bydgoszcz, poland, 50, None)
+    team2 = Team(league, ekstraliga, "Apator", torun, poland, 99, None)
+    team3 = Team(league, druga_liga, "Polonia", bydgoszcz, poland, 50, None)
+    team4 = Team(league, ekstraliga, "Polonia", bydgoszcz, poland, 50, None)
+    team5 = Team(league, ekstraliga, "Polonia", torun, poland, 50, None)
+    team6 = Team(league, ekstraliga, "Polonia", torun, poland, 60, None)
+    # note - compare only names
+    assert team1 != team2
+    assert team1 == team3
+    assert team1 == team4
+    assert team1 == team5
+    assert team1 == team6
