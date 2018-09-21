@@ -8,7 +8,15 @@ from engine.db.track import Track
 from engine.db.track_preparation import TrackPreparation
 
 
-def test_constructor():
+def init():
+    global poland
+    global league
+    global ekstraliga
+    global torun
+    global apator
+    global stadium
+    global track
+    global track_preparation
     poland = Country("Poland", 38000000, 30, 60)
     league = League(poland, "polish league", 99)
 
@@ -21,20 +29,17 @@ def test_constructor():
     stadium = Stadium("Motoarena", poland, apator, 20000, 99)
     track = Track(stadium, 300, 30, 45)
     track_preparation = TrackPreparation(track, 90, 50)
+
+
+def test_constructor():
+    init()
     assert track_preparation.track == track
     assert track_preparation.adhesion == 50
     assert track_preparation.wetness == 90
 
+
 def test_eq():
-    poland = Country("Poland", 38000000, 30, 60)
-    league = League(poland, "polish league", 99)
-
-    ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
-
-    torun = City("Toruń", None, 200000, 30, 85)
-
-    apator = Team(league, ekstraliga, "Apator", torun, poland, 99, None)
-
+    init()
     stadium1 = Stadium("Motoarena", poland, apator, 20000, 99)
     stadium2 = Stadium("Motoarena2", poland, apator, 20000, 99)
 

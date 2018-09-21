@@ -1,3 +1,5 @@
+import jsonpickle
+
 class GameDatabase:
     def __init__(self, cities=None, countries=None, leagues=None, league_classes=None, persons=None, riders=None,
                  stadiums=None, teams=None, tracks=None):
@@ -12,11 +14,10 @@ class GameDatabase:
         self.tracks = tracks
 
     def save(self, file):
-        import jsonpickle
         with open(file, 'w') as outfile:
             outfile.write(jsonpickle.encode(self,))
 
-    def load(self, file):
-        import jsonpickle
+    @staticmethod
+    def load(file):
         with open(file, 'r') as outfile:
             return jsonpickle.decode(outfile.read())

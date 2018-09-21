@@ -68,7 +68,6 @@ def init_db():
     track_apator = Track(stadium_apator, 300, 30, 45)
     track_polonia = Track(stadium_polonia, 300, 30, 45)
 
-
     game_database = GameDatabase([torun, bydgoszcz], [poland, ], [league, ], [ekstraliga, pierwsza_liga, druga_liga],
                     [person, person2], [rider, rider2], [stadium_polonia, stadium_apator], [apator, polonia],
                     [track_polonia, track_apator])
@@ -79,8 +78,7 @@ def init_db():
                     [track_polonia, track_apator], game_state)
 
 
-def test_game_database_constructor():
-    init_db()
+def check_database_fields(game_database):
     assert game_database.cities == [torun, bydgoszcz]
     assert game_database.countries == [poland, ]
     assert game_database.leagues == [league, ]
@@ -91,25 +89,19 @@ def test_game_database_constructor():
     assert game_database.teams == [apator, polonia]
     assert game_database.tracks == [track_polonia, track_apator]
 
+
+def test_game_database_constructor():
+    init_db()
+    check_database_fields(game_database)
+
+
 def test_game_save_constructor():
     init_db()
-    assert game_save.cities == [torun, bydgoszcz]
-    assert game_save.countries == [poland, ]
-    assert game_save.leagues == [league, ]
-    assert game_save.league_classes == [ekstraliga, pierwsza_liga, druga_liga]
-    assert game_save.persons == [person, person2]
-    assert game_save.riders == [rider, rider2]
-    assert game_save.stadiums == [stadium_polonia, stadium_apator]
-    assert game_save.teams == [apator, polonia]
-    assert game_save.tracks == [track_polonia, track_apator]
+    check_database_fields(game_save)
     assert game_save.game_state == game_state
 
-def test_game_database_save_and_load():
-    init_db()
-    game_database.save("file.dat")
-    game_database2 = GameDatabase()
-    game_database2 = game_database2.load("file.dat")
 
+def check_database_equals(game_database, game_database2):
     assert game_database.cities == game_database2.cities
     assert game_database.countries == game_database2.countries
     assert game_database.leagues == game_database2.leagues
@@ -120,19 +112,20 @@ def test_game_database_save_and_load():
     assert game_database.teams == game_database2.teams
     assert game_database.tracks == game_database2.tracks
 
+
+def test_game_database_save_and_load():
+    init_db()
+    game_database.save("file.dat")
+    game_database2 = GameDatabase()
+    game_database2 = game_database2.load("file.dat")
+    check_database_equals(game_database, game_database2)
+
+
 def test_game_save_save_and_load():
     init_db()
     game_save.save("file.dat")
     game_save2 = GameSave()
     game_save2 = game_save2.load("file.dat")
 
-    assert game_save.cities == game_save2.cities
-    assert game_save.countries == game_save2.countries
-    assert game_save.leagues == game_save2.leagues
-    assert game_save.league_classes == game_save2.league_classes
-    assert game_save.persons == game_save2.persons
-    assert game_save.riders == game_save.riders
-    assert game_save.stadiums == game_save2.stadiums
-    assert game_save.teams == game_save2.teams
-    assert game_save.tracks == game_save2.tracks
+    check_database_equals(game_save, game_save2)
     assert game_save.game_state == game_save2.game_state

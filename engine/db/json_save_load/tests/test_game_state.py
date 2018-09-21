@@ -7,6 +7,7 @@ def test_constructor():
     game_state = GameState(date)
     assert game_state.date == date
 
+
 def test_eq():
     date1 = Date(1, 1, 2018)
     date2 = Date(2, 1, 2018)

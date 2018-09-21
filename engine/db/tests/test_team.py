@@ -5,7 +5,15 @@ from engine.db.league_class import LeagueClass
 from engine.db.team import Team
 
 
-def test_constructor():
+def init():
+    global poland
+    global league
+    global ekstraliga
+    global druga_liga
+    global torun
+    global bydgoszcz
+    global polonia
+    global apator
 
     poland = Country("Poland", 38000000, 30, 60)
     league = League(poland, "polish league", 99)
@@ -20,6 +28,10 @@ def test_constructor():
 
     apator = Team(league, ekstraliga, "Apator", torun, poland, 99, [polonia, ])
     polonia.derby_teams = [apator, ]
+
+
+def test_constructor():
+    init()
 
     assert polonia.league == league
     assert apator.league == league
@@ -43,15 +55,6 @@ def test_constructor():
     assert apator.derby_teams == [polonia, ]
 
 def test_eq():
-
-    poland = Country("Poland", 38000000, 30, 60)
-    league = League(poland, "polish league", 99)
-
-    ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
-    druga_liga = LeagueClass(league, "Polska 2 liga", 50, None, None)
-
-    torun = City("Toruń", None, 200000, 30, 85)
-    bydgoszcz = City("Bydgoszcz", None, 400000, 40, 55)
 
     team1 = Team(league, druga_liga, "Polonia", bydgoszcz, poland, 50, None)
     team2 = Team(league, ekstraliga, "Apator", torun, poland, 99, None)
