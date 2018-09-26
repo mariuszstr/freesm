@@ -5,7 +5,7 @@ from engine.db.rider import Rider
 
 def test_constructor():
 
-    rider = Rider(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    rider = Rider(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     date = Date(18, 3, 1985)
     person = Person("Tony", "Rickardsson", rider, date, 1, 2, 3, 4, 5, 6, 7, 8, 9)
     assert person.first_name == "Tony"
@@ -24,8 +24,8 @@ def test_constructor():
 
 
 def test_eq():
-    rider1 = Rider(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    rider2 = Rider(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    rider1 = Rider(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    rider2 = Rider(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     date1 = Date(18, 3, 1985)
     date2 = Date(18, 4, 1985)
 

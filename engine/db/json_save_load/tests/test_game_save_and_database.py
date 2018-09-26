@@ -38,15 +38,15 @@ def init_db():
     global game_state
     global game_save
 
-    rider = Rider(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    rider2 = Rider(9, 10, 11, 12, 13, 14, 15, 16, 17)
+    rider = Rider(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    rider2 = Rider(9, 10, 11, 12, 13, 14, 15, 16, 17, 18)
 
     date = Date(18, 3, 1985)
     person = Person("x", "y", rider, date, 1, 2, 3, 4, 5, 6, 7, 8, 9)
     person2 = Person("x", "y", rider2, date, 9, 10, 11, 12, 13, 14, 15, 16, 17)
 
     poland = Country("Poland", 38000000, 30, 60)
-    league = League(poland, "polish league", 99)
+    league = League(poland, "polish league", None)
     ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
     druga_liga = LeagueClass(league, "Polska 2 liga", 50, None, None)
     pierwsza_liga = LeagueClass(league, "Polska 1 liga", 70, ekstraliga, druga_liga)
@@ -116,16 +116,14 @@ def check_database_equals(game_database, game_database2):
 def test_game_database_save_and_load():
     init_db()
     game_database.save("file.dat")
-    game_database2 = GameDatabase()
-    game_database2 = game_database2.load("file.dat")
+    game_database2 = GameDatabase.load("file.dat")
     check_database_equals(game_database, game_database2)
 
 
 def test_game_save_save_and_load():
     init_db()
     game_save.save("file.dat")
-    game_save2 = GameSave()
-    game_save2 = game_save2.load("file.dat")
+    game_save2 = GameDatabase.load("file.dat")
 
     check_database_equals(game_save, game_save2)
     assert game_save.game_state == game_save2.game_state

@@ -6,7 +6,6 @@ class Person:
         self.rider = rider
         self.birth_date = birth_date
         self.determination = determination
-        self.determination = determination
         self.loyalty = loyalty
         self.weight = weight
         self.height = height

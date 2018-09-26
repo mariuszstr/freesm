@@ -5,7 +5,7 @@ from engine.db.league_class import LeagueClass
 
 def test_constructor():
     poland = Country("Poland", 38000000, 30, 60)
-    league = League(poland, "polish league", 99)
+    league = League(poland, "polish league", None)
     ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
     druga_liga = LeagueClass(league, "Polska 2 liga", 50, None, None)
     pierwsza_liga = LeagueClass(league, "Polska 1 liga", 70, ekstraliga, druga_liga)
@@ -37,7 +37,7 @@ def test_constructor():
 
 def test_eq():
     poland = Country("Poland", 38000000, 30, 60)
-    league = League(poland, "polish league", 99)
+    league = League(poland, "polish league", None)
 
     class1 = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
     class2 = LeagueClass(league, "Polska 1 liga", 70, class1, None)

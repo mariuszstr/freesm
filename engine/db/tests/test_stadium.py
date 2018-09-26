@@ -13,7 +13,7 @@ def init():
     global apator
     global stadium
     poland = Country("Poland", 38000000, 30, 60)
-    league = League(poland, "polish league", 99)
+    league = League(poland, "polish league", None)
 
     ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
 

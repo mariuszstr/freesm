@@ -7,9 +7,14 @@ from engine.db.team import Team
 from engine.db.track import Track
 
 
-def test_constructor():
+def init():
+    global poland
+    global league
+    global ekstraliga
+    global torun
+    global apator
     poland = Country("Poland", 38000000, 30, 60)
-    league = League(poland, "polish league", 99)
+    league = League(poland, "polish league", None)
 
     ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
 
@@ -17,6 +22,9 @@ def test_constructor():
 
     apator = Team(league, ekstraliga, "Apator", torun, poland, 99, None)
 
+
+def test_constructor():
+    init()
     stadium = Stadium("Motoarena", poland, apator, 20000, 99)
     track = Track(stadium, 300, 30, 45)
     assert track.stadium == stadium
@@ -26,14 +34,7 @@ def test_constructor():
 
 
 def test_eq():
-    poland = Country("Poland", 38000000, 30, 60)
-    league = League(poland, "polish league", 99)
-
-    ekstraliga = LeagueClass(league, "Polska Ekstraliga", 99, None, None)
-
-    torun = City("Toruń", None, 200000, 30, 85)
-
-    apator = Team(league, ekstraliga, "Apator", torun, poland, 99, None)
+    init()
 
     stadium1 = Stadium("Motoarena", poland, apator, 20000, 99)
     stadium2 = Stadium("Motoarena2", poland, apator, 20000, 99)
