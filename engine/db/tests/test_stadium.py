@@ -28,7 +28,7 @@ def test_constructor():
     assert stadium.name == "Motoarena"
     assert stadium.country == poland
     assert stadium.team == apator
-    assert stadium.sits == 20000
+    assert stadium.capacity == 20000
     assert stadium.ability == 99
 
 
