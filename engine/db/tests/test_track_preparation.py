@@ -34,8 +34,8 @@ def init():
 def test_constructor():
     init()
     assert track_preparation.track == track
-    assert track_preparation.adhesion == 50
-    assert track_preparation.wetness == 90
+    assert track_preparation.grippness == 50
+    assert track_preparation.water == 90
 
 
 def test_eq():
