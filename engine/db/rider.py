@@ -7,6 +7,7 @@ class Rider:
         # grippy + water = mud
         # normalny + woda = losowo przyczepny lub śliski
         # normal + water = random grippy or slick
+        # now implemented only as slick
         self.start = start
         self.ride = ride
         self.attack = attack

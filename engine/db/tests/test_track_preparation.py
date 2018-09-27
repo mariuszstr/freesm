@@ -37,6 +37,60 @@ def test_constructor():
     assert track_preparation.grippness == 50
     assert track_preparation.water == 90
 
+def test_hard_percent():
+    assert TrackPreparation(track, 50, 50).hard_percent == 50
+    assert TrackPreparation(track, 0, 0).hard_percent == 100
+    assert TrackPreparation(track, 0, 100).hard_percent == 50
+    assert TrackPreparation(track, 100, 100).hard_percent == 0
+    assert TrackPreparation(track, 0, 50).hard_percent == 75
+    assert TrackPreparation(track, 50, 0).hard_percent == 75
+    assert TrackPreparation(track, 50, 100).hard_percent == 25
+    assert TrackPreparation(track, 100, 50).hard_percent == 25
+
+
+def test_grippy_percent():
+    assert TrackPreparation(track, 50, 50).grippy_percent == 50
+    assert TrackPreparation(track, 0, 0).grippy_percent == 50
+    assert TrackPreparation(track, 0, 100).grippy_percent == 100
+    assert TrackPreparation(track, 100, 100).grippy_percent == 50
+    assert TrackPreparation(track, 0, 50).grippy_percent == 75
+    assert TrackPreparation(track, 50, 0).grippy_percent == 25
+    assert TrackPreparation(track, 50, 100).grippy_percent == 75
+    assert TrackPreparation(track, 100, 50).grippy_percent == 25
+
+
+def test_normal_percent():
+    assert TrackPreparation(track, 50, 50).normal_percent == 75
+    assert TrackPreparation(track, 0, 0).normal_percent == 75
+    assert TrackPreparation(track, 0, 100).normal_percent == 75
+    assert TrackPreparation(track, 100, 100).normal_percent == 25
+    assert TrackPreparation(track, 0, 50).normal_percent == 100
+    assert TrackPreparation(track, 50, 0).normal_percent == 50
+    assert TrackPreparation(track, 50, 100).normal_percent == 50
+    assert TrackPreparation(track, 100, 50).normal_percent == 50
+
+
+def test_mudy_percent():
+    assert TrackPreparation(track, 50, 50).mudy_percent == 50
+    assert TrackPreparation(track, 0, 0).mudy_percent == 0
+    assert TrackPreparation(track, 0, 100).mudy_percent == 50
+    assert TrackPreparation(track, 100, 100).mudy_percent == 100
+    assert TrackPreparation(track, 0, 50).mudy_percent == 25
+    assert TrackPreparation(track, 50, 0).mudy_percent == 25
+    assert TrackPreparation(track, 50, 100).mudy_percent == 75
+    assert TrackPreparation(track, 100, 50).mudy_percent == 75
+
+
+def test_slick_percent():
+    assert TrackPreparation(track, 50, 50).slick_percent == 75
+    assert TrackPreparation(track, 0, 0).slick_percent == 25
+    assert TrackPreparation(track, 0, 100).slick_percent == 25
+    assert TrackPreparation(track, 100, 100).slick_percent == 75
+    assert TrackPreparation(track, 0, 50).slick_percent == 50
+    assert TrackPreparation(track, 50, 0).slick_percent == 50
+    assert TrackPreparation(track, 50, 100).slick_percent == 50
+    assert TrackPreparation(track, 100, 50).slick_percent == 100
+
 
 def test_eq():
     init()
