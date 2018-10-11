@@ -8,3 +8,8 @@ class WeatherType(Enum):
     LITTLE_RAIN = 3
     RAIN = 4
     HUGE_RAIN = 5
+
+
+class Weather:
+    def __init__(self, weather_type):
+        self.weather_type = weather_type
