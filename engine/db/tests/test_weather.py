@@ -1,6 +1,6 @@
 from unittest import mock
 
-from engine.db.weather import Weather, generate_temperature, generate_weather_type
+from engine.db.weather import Weather, generate_temperature, generate_weather_type, WeatherType
 
 
 def test_weather_constructor():
@@ -31,6 +31,9 @@ def test_generate_temperature_april(mock):
 
 
 @mock.patch("engine.db.weather.random")
-def test_generate_weather_type_positive_value_sunny_start(mock):
+def test_generate_weather_type(mock):
     mock.choices.return_value = 1
     assert generate_weather_type(10) == 1
+    mock.choices.assert_called_with([WeatherType.SUNNY] * 21 + [WeatherType.SUNNY_WITH_LITTLE_CLOUDS] * 60 +
+                          [WeatherType.CLOUDY] * 137 + [WeatherType.LITTLE_RAIN] * 63 + [WeatherType.RAIN] *
+                          60 + [WeatherType.HUGE_RAIN] * 23)
