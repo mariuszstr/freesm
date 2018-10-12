@@ -26,11 +26,11 @@ def generate_weather_type(temperature):
                           60 + [WeatherType.HUGE_RAIN] * 23)
     if temperature < 2:
         if choice == WeatherType.LITTLE_RAIN:
-            choice = WeatherType.LITTLE_SNOW
+            return WeatherType.LITTLE_SNOW
         if choice == WeatherType.RAIN:
-            choice = WeatherType.SNOW
+            return WeatherType.SNOW
         if choice == WeatherType.HUGE_RAIN:
-            choice = WeatherType.HUGE_SNOW
+            return WeatherType.HUGE_SNOW
 
     return choice
 

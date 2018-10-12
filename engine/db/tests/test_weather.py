@@ -55,3 +55,21 @@ def test_generate_weather_type_little_rain_temperature_1_celcius(mock):
 def test_generate_weather_type_little_rain_temperature_negative_celcius(mock):
     mock.choices.return_value = WeatherType.LITTLE_RAIN
     assert generate_weather_type(-1) == WeatherType.LITTLE_SNOW
+
+
+@mock.patch("engine.db.weather.random")
+def test_generate_weather_type_rain_temperature_positive(mock):
+    mock.choices.return_value = WeatherType.RAIN
+    assert generate_weather_type(3) == WeatherType.RAIN
+
+
+@mock.patch("engine.db.weather.random")
+def test_generate_weather_type_rain_temperature_1_celcius(mock):
+    mock.choices.return_value = WeatherType.RAIN
+    assert generate_weather_type(1) == WeatherType.SNOW
+
+
+@mock.patch("engine.db.weather.random")
+def test_generate_weather_type_rain_temperature_negative_celcius(mock):
+    mock.choices.return_value = WeatherType.RAIN
+    assert generate_weather_type(-5) == WeatherType.SNOW
