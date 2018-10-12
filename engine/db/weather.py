@@ -37,3 +37,9 @@ TEMPERATURES_RANGES = (
 
 def generate_temperature(month):
     return randint(TEMPERATURES_RANGES[month - 1], TEMPERATURES_RANGES[month - 1])
+
+
+def generate_weather(month):
+    temperature = generate_temperature(month)
+    weather_type = generate_temperature(temperature)
+    return Weather(weather_type, temperature)
