@@ -2,14 +2,14 @@ from unittest import mock
 
 from engine.db.weather import Weather, generate_temperature, generate_weather_type, WeatherType, generate_weather
 
-
+#todo
 def test_weather_constructor():
-    weather1 = Weather(1, 15)
-    assert weather1.weather_type == 1
-    assert weather1.temperature == 15
-    weather2 = Weather(3, 5)
-    assert weather2.weather_type == 3
-    assert weather2.temperature == 5
+    temperatures = [13, 3]
+    weather_types = [WeatherType.SUNNY, WeatherType.CLOUDY]
+    for counter in range(0, 1):
+        weather = Weather(weather_types[counter], temperatures[counter])
+        assert weather.weather_type == weather_types[counter]
+        assert weather.temperature == temperatures[counter]
 
 
 def randint(from_, to):
@@ -32,8 +32,8 @@ def test_generate_temperature_april(mock):
 
 @mock.patch("engine.db.weather.random")
 def test_generate_weather_type(mock):
-    mock.choices.return_value = 1
-    assert generate_weather_type(10) == 1
+    mock.choices.return_value = WeatherType.SUNNY
+    assert generate_weather_type(10) == WeatherType.SUNNY
     mock.choices.assert_called_with([WeatherType.SUNNY] * 21 + [WeatherType.SUNNY_WITH_LITTLE_CLOUDS] * 60 +
                           [WeatherType.CLOUDY] * 137 + [WeatherType.LITTLE_RAIN] * 63 + [WeatherType.RAIN] *
                           60 + [WeatherType.HUGE_RAIN] * 23)
