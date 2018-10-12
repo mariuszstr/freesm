@@ -15,8 +15,9 @@ class WeatherType(Enum):
 
 
 class Weather:
-    def __init__(self, weather_type):
+    def __init__(self, weather_type, temperature):
         self.weather_type = weather_type
+        self.temperature = temperature
 
 
 def generate_weather_type():
