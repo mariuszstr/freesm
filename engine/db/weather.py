@@ -20,10 +20,14 @@ class Weather:
         self.temperature = temperature
 
 
-def generate_weather_type():
-    return random.choices([WeatherType.SUNNY] * 21 + [WeatherType.SUNNY_WITH_LITTLE_CLOUDS] * 60 +
+def generate_weather_type(temperature):
+    choice = random.choices([WeatherType.SUNNY] * 21 + [WeatherType.SUNNY_WITH_LITTLE_CLOUDS] * 60 +
                           [WeatherType.CLOUDY] * 137 + [WeatherType.LITTLE_RAIN] * 63 + [WeatherType.RAIN] *
                           60 + [WeatherType.HUGE_RAIN] * 23)
+    if temperature < 2:
+        if choice in [WeatherType.LITTLE_RAIN_RAIN, WeatherType. HUGE_RAIN]:
+            choice += 3
+    return choice
 
 
 TEMPERATURES_RANGES = (
