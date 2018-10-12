@@ -37,3 +37,9 @@ def test_generate_weather_type(mock):
     mock.choices.assert_called_with([WeatherType.SUNNY] * 21 + [WeatherType.SUNNY_WITH_LITTLE_CLOUDS] * 60 +
                           [WeatherType.CLOUDY] * 137 + [WeatherType.LITTLE_RAIN] * 63 + [WeatherType.RAIN] *
                           60 + [WeatherType.HUGE_RAIN] * 23)
+
+
+@mock.patch("engine.db.weather.random")
+def test_generate_weather_type_little_rain_temperature_positive(mock):
+    mock.choices.return_value = WeatherType.LITTLE_RAIN
+    assert generate_weather_type(10) == WeatherType.LITTLE_RAIN
