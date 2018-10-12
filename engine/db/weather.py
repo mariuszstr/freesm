@@ -9,6 +9,9 @@ class WeatherType(Enum):
     LITTLE_RAIN = 4
     RAIN = 5
     HUGE_RAIN = 6
+    LITTLE_SNOW = 7
+    SNOW = 6
+    HUGE_SNOW = 7
 
 
 class Weather:
