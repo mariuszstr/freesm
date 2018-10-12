@@ -46,5 +46,5 @@ def generate_temperature(month):
 
 def generate_weather(month):
     temperature = generate_temperature(month)
-    weather_type = generate_temperature(temperature)
+    weather_type = generate_weather_type(temperature)
     return Weather(weather_type, temperature)

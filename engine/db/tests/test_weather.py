@@ -1,6 +1,6 @@
 from unittest import mock
 
-from engine.db.weather import Weather, generate_temperature, generate_weather_type, WeatherType
+from engine.db.weather import Weather, generate_temperature, generate_weather_type, WeatherType, generate_weather
 
 
 def test_weather_constructor():
@@ -91,3 +91,17 @@ def test_generate_weather_type_huge_rain_temperature_1_celcius(mock):
 def test_generate_weather_type_huge_rain_temperature_negative_celcius(mock):
     mock.choices.return_value = WeatherType.HUGE_RAIN
     assert generate_weather_type(-55) == WeatherType.HUGE_SNOW
+
+
+@mock.patch("engine.db.weather.generate_weather_type")
+@mock.patch("engine.db.weather.generate_temperature")
+def test_generate_weather(generate_temperature_mock, generate_weather_type_mock):
+    temperature = 10
+    month = 5
+    generate_temperature_mock.return_value = temperature
+    generate_weather_type_mock.return_value = WeatherType.CLOUDY
+    weather = generate_weather(month)
+    assert weather.temperature == temperature
+    assert weather.weather_type == WeatherType.CLOUDY
+    generate_temperature_mock.assert_called_with(month)
+    generate_weather_type_mock.assert_called_with(temperature)
