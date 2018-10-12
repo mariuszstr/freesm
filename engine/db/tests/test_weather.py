@@ -21,3 +21,10 @@ def test_generate_temperature_march(mock):
     temperature = generate_temperature(3)
     assert temperature == -5
     mock.assert_called_with(-5, 15)
+
+
+@mock.patch("engine.db.weather.randint", side_effect=randint)
+def test_generate_temperature_april(mock):
+    temperature = generate_temperature(4)
+    assert temperature == 3
+    mock.assert_called_with(3, 22)
