@@ -73,3 +73,21 @@ def test_generate_weather_type_rain_temperature_1_celcius(mock):
 def test_generate_weather_type_rain_temperature_negative_celcius(mock):
     mock.choices.return_value = WeatherType.RAIN
     assert generate_weather_type(-5) == WeatherType.SNOW
+
+
+@mock.patch("engine.db.weather.random")
+def test_generate_weather_type_huge_rain_temperature_positive(mock):
+    mock.choices.return_value = WeatherType.HUGE_RAIN
+    assert generate_weather_type(2) == WeatherType.HUGE_RAIN
+
+
+@mock.patch("engine.db.weather.random")
+def test_generate_weather_type_huge_rain_temperature_1_celcius(mock):
+    mock.choices.return_value = WeatherType.HUGE_RAIN
+    assert generate_weather_type(1) == WeatherType.HUGE_SNOW
+
+
+@mock.patch("engine.db.weather.random")
+def test_generate_weather_type_huge_rain_temperature_negative_celcius(mock):
+    mock.choices.return_value = WeatherType.HUGE_RAIN
+    assert generate_weather_type(-55) == WeatherType.HUGE_SNOW
