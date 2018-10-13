@@ -5,6 +5,7 @@ from engine.db.league_class import LeagueClass
 from engine.db.stadium import Stadium
 from engine.db.team import Team
 
+
 def init():
     global poland
     global league
@@ -20,7 +21,7 @@ def init():
     torun = City("Toruń", None, 200000, 30, 85)
 
     apator = Team(league, ekstraliga, "Apator", torun, poland, 99, None)
-    stadium = Stadium("Motoarena", poland, apator, 20000, 99)
+    stadium = Stadium("Motoarena", poland, apator, 20000, 99, record_name="Anonymous!", record_time=56.55)
 
 
 def test_constructor():
@@ -30,6 +31,8 @@ def test_constructor():
     assert stadium.team == apator
     assert stadium.capacity == 20000
     assert stadium.ability == 99
+    assert stadium.record_time == 56.55
+    assert stadium.record_name == "Anonymous!"
 
 
 def test_eq():
